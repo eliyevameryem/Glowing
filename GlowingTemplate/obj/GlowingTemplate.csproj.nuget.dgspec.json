@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Asus\\source\\repos\\GlowingTemplate\\GlowingTemplate\\GlowingTemplate.csproj": {}
+    "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\GlowingTemplate.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Asus\\source\\repos\\GlowingTemplate\\GlowingTemplate\\GlowingTemplate.csproj": {
+    "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\GlowingTemplate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus\\source\\repos\\GlowingTemplate\\GlowingTemplate\\GlowingTemplate.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\GlowingTemplate.csproj",
         "projectName": "GlowingTemplate",
-        "projectPath": "C:\\Users\\Asus\\source\\repos\\GlowingTemplate\\GlowingTemplate\\GlowingTemplate.csproj",
+        "projectPath": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\GlowingTemplate.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus\\source\\repos\\GlowingTemplate\\GlowingTemplate\\obj\\",
+        "outputPath": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",

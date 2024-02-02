@@ -1,12 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GlowingTemplate.DAL;
+using GlowingTemplate.Models;
+using GlowingTemplate.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GlowingTemplate.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly AppDbContext _context;
+
+        public HomeController(AppDbContext context)
         {
-            return View();
+            this._context = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            HomeVM homeVm = new HomeVM()
+            {
+                Sliders = await _context.Sliders.OrderByDescending(s => s.Id).Take(5).ToListAsync(),
+            };
+            return View(homeVm);
         }
     }
 }
