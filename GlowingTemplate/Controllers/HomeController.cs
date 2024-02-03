@@ -19,6 +19,7 @@ namespace GlowingTemplate.Controllers
             HomeVM homeVm = new HomeVM()
             {
                 Sliders = await _context.Sliders.OrderByDescending(s => s.Id).Take(5).ToListAsync(),
+                Sections= await _context.Sections.OrderByDescending(s=>s.Id).Take(5).ToListAsync(),
             };
             return View(homeVm);
         }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9raJK7OgWIBY7jhKvSMeAAXU3i+iTKT9ylb1x9gO5Pc=",
+  "Hash": "oXWIqfk9g2scR150uKqsTjRjYrJcvmRxqxadgauOs8g=",
   "Source": "GlowingTemplate",
   "BasePath": "_content/GlowingTemplate",
   "Mode": "Default",
@@ -4216,12 +4216,12 @@
       "OriginalItemSpec": "wwwroot\\manage\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
     },
     {
-      "Identity": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\slider\\a6504380-0119-434a-bfdd-180c50857f07hero-slider-10.jpg",
+      "Identity": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\section\\8448f7a1-6287-4684-b5bd-7776d26e9acbpost-comment-avatar-02.png",
       "SourceId": "GlowingTemplate",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\",
       "BasePath": "_content/GlowingTemplate",
-      "RelativePath": "upload/slider/a6504380-0119-434a-bfdd-180c50857f07hero-slider-10.jpg",
+      "RelativePath": "upload/section/8448f7a1-6287-4684-b5bd-7776d26e9acbpost-comment-avatar-02.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -4230,7 +4230,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\upload\\slider\\a6504380-0119-434a-bfdd-180c50857f07hero-slider-10.jpg"
+      "OriginalItemSpec": "wwwroot\\upload\\section\\8448f7a1-6287-4684-b5bd-7776d26e9acbpost-comment-avatar-02.png"
+    },
+    {
+      "Identity": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\slider\\6c3cfc92-6272-4527-bb3f-3af60f0adb89hero-slider-02.jpg",
+      "SourceId": "GlowingTemplate",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\",
+      "BasePath": "_content/GlowingTemplate",
+      "RelativePath": "upload/slider/6c3cfc92-6272-4527-bb3f-3af60f0adb89hero-slider-02.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\slider\\6c3cfc92-6272-4527-bb3f-3af60f0adb89hero-slider-02.jpg"
     }
   ]
 }

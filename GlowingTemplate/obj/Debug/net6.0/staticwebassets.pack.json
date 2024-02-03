@@ -985,8 +985,12 @@
       "PackagePath": "staticwebassets\\manage\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
     },
     {
-      "Id": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\slider\\a6504380-0119-434a-bfdd-180c50857f07hero-slider-10.jpg",
-      "PackagePath": "staticwebassets\\upload\\slider\\a6504380-0119-434a-bfdd-180c50857f07hero-slider-10.jpg"
+      "Id": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\section\\8448f7a1-6287-4684-b5bd-7776d26e9acbpost-comment-avatar-02.png",
+      "PackagePath": "staticwebassets\\upload\\section\\8448f7a1-6287-4684-b5bd-7776d26e9acbpost-comment-avatar-02.png"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\slider\\6c3cfc92-6272-4527-bb3f-3af60f0adb89hero-slider-02.jpg",
+      "PackagePath": "staticwebassets\\upload\\slider\\6c3cfc92-6272-4527-bb3f-3af60f0adb89hero-slider-02.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.GlowingTemplate.Microsoft.AspNetCore.StaticWebAssets.props",

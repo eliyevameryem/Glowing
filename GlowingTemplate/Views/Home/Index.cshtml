@@ -962,50 +962,21 @@
     <section class="pt-12 pb-lg-13 pb-13">
         <div class="container container-xxl">
             <div class="row">
-                <div class="col-xl-3 col-md-6" data-animate="fadeInUp">
-                    <div class="icon-box icon-box-style-1 card border-0 text-center">
-                        <div class="icon-box-icon card-img fs-70px text-primary">
-                            <svg class="icon"><use xlink:href="#icon-box-01"></use></svg>
-                        </div>
-                        <div class="icon-box-content card-body pt-4">
-                            <h3 class="icon-box-title card-title fs-5 mb-4 pb-2">Free Shipping</h3>
-                            <p class="icon-box-desc card-text fs-18px mb-0">Free Shipping for orders over $130</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6" data-animate="fadeInUp">
-                    <div class="icon-box icon-box-style-1 card border-0 text-center">
-                        <div class="icon-box-icon card-img fs-70px text-primary">
-                            <svg class="icon"><use xlink:href="#icon-box-02"></use></svg>
-                        </div>
-                        <div class="icon-box-content card-body pt-4">
-                            <h3 class="icon-box-title card-title fs-5 mb-4 pb-2">Returns</h3>
-                            <p class="icon-box-desc card-text fs-18px mb-0">Within 30 days for an exchange.</p>
+             @foreach (var item in Model.Sections)
+                {
+                    <div class="col-xl-3 col-md-6" data-animate="fadeInUp">
+                        <div class="icon-box icon-box-style-1 card border-0 text-center">
+                            <div class="icon-box-icon card-img fs-70px text-primary">
+                                <svg class="icon"><use xlink:href="upload/section/@item.ImageUrl"></use></svg>
+                            </div>
+                            <div class="icon-box-content card-body pt-4">
+                                <h3 class="icon-box-title card-title fs-5 mb-4 pb-2">@item.Title</h3>
+                                <p class="icon-box-desc card-text fs-18px mb-0">@item.Description</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-md-6" data-animate="fadeInUp">
-                    <div class="icon-box icon-box-style-1 card border-0 text-center">
-                        <div class="icon-box-icon card-img fs-70px text-primary">
-                            <svg class="icon"><use xlink:href="#icon-box-03"></use></svg>
-                        </div>
-                        <div class="icon-box-content card-body pt-4">
-                            <h3 class="icon-box-title card-title fs-5 mb-4 pb-2">Online Support</h3>
-                            <p class="icon-box-desc card-text fs-18px mb-0">24 hours a day, 7 days a week</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6" data-animate="fadeInUp">
-                    <div class="icon-box icon-box-style-1 card border-0 text-center">
-                        <div class="icon-box-icon card-img fs-70px text-primary">
-                            <svg class="icon"><use xlink:href="#icon-box-04"></use></svg>
-                        </div>
-                        <div class="icon-box-content card-body pt-4">
-                            <h3 class="icon-box-title card-title fs-5 mb-4 pb-2">Flexible Payment</h3>
-                            <p class="icon-box-desc card-text fs-18px mb-0">Pay with Multiple Credit Cards</p>
-                        </div>
-                    </div>
-                </div>
+
+                } 
             </div>
         </div>
     </section>

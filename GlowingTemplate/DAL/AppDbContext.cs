@@ -10,5 +10,6 @@ namespace GlowingTemplate.DAL
         {
         }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Section> Sections { get; set; }
     }
 }
