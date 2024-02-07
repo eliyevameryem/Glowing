@@ -6,5 +6,6 @@ namespace GlowingTemplate.ViewModels
     {
         public List<Slider> Sliders { get; set; }
         public List<Section> Sections { get; set; }
+        public List<Product> Products { get; set; }
     }
 }
