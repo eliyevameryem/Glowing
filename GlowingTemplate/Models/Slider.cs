@@ -8,7 +8,7 @@ namespace GlowingTemplate.Models
         public int Id { get; set; }
         [MaxLength(15)]
         public string Title { get; set; }
-        [MaxLength(20)]
+        [MaxLength(50)]
         public string Description { get; set; }
         public string? ImageUrl { get; set; }
         [NotMapped]
