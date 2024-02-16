@@ -193,9 +193,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Tag" asp-action="Index">
+                        <a class="nav-link" asp-controller="Size" asp-action="Index">
                             <i class="mdi mdi-home menu-icon"></i>
-                            <span class="menu-title">Tag</span>
+                            <span class="menu-title">Size</span>
+                        </a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Product" asp-action="Index">
+                            <i class="mdi mdi-home menu-icon"></i>
+                            <span class="menu-title">Product</span>
                         </a>
                     </li>
                     
@@ -239,6 +246,7 @@
     <script src="~/manage/js/data-table.js"></script>
     <script src="~/manage/js/jquery.dataTables.js"></script>
     <script src="~/manage/js/dataTables.bootstrap4.js"></script>
+    @RenderSection("DeleteFile",false)
     <!-- End custom js for this page-->
 </body>
 

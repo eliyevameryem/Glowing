@@ -137,6 +137,9 @@ namespace GlowingTemplate.Migrations
                     b.Property<decimal>("SKU")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -169,7 +172,7 @@ namespace GlowingTemplate.Migrations
                     b.ToTable("ProductImages");
                 });
 
-            modelBuilder.Entity("GlowingTemplate.Models.ProductTag", b =>
+            modelBuilder.Entity("GlowingTemplate.Models.ProductSize", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -180,16 +183,16 @@ namespace GlowingTemplate.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TagId")
+                    b.Property<int>("SizeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("TagId");
+                    b.HasIndex("SizeId");
 
-                    b.ToTable("ProductTags");
+                    b.ToTable("ProductSizes");
                 });
 
             modelBuilder.Entity("GlowingTemplate.Models.Section", b =>
@@ -216,6 +219,23 @@ namespace GlowingTemplate.Migrations
                     b.ToTable("Sections");
                 });
 
+            modelBuilder.Entity("GlowingTemplate.Models.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sizes");
+                });
+
             modelBuilder.Entity("GlowingTemplate.Models.Slider", b =>
                 {
                     b.Property<int>("Id")
@@ -240,23 +260,6 @@ namespace GlowingTemplate.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
-                });
-
-            modelBuilder.Entity("GlowingTemplate.Models.Tag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -414,23 +417,23 @@ namespace GlowingTemplate.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("GlowingTemplate.Models.ProductTag", b =>
+            modelBuilder.Entity("GlowingTemplate.Models.ProductSize", b =>
                 {
                     b.HasOne("GlowingTemplate.Models.Product", "Product")
-                        .WithMany("ProductTags")
+                        .WithMany("PrdSizes")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GlowingTemplate.Models.Tag", "Tag")
-                        .WithMany("ProductTags")
-                        .HasForeignKey("TagId")
+                    b.HasOne("GlowingTemplate.Models.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
 
-                    b.Navigation("Tag");
+                    b.Navigation("Size");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -491,14 +494,9 @@ namespace GlowingTemplate.Migrations
 
             modelBuilder.Entity("GlowingTemplate.Models.Product", b =>
                 {
+                    b.Navigation("PrdSizes");
+
                     b.Navigation("ProductImages");
-
-                    b.Navigation("ProductTags");
-                });
-
-            modelBuilder.Entity("GlowingTemplate.Models.Tag", b =>
-                {
-                    b.Navigation("ProductTags");
                 });
 #pragma warning restore 612, 618
         }

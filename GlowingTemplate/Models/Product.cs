@@ -8,9 +8,11 @@
         public decimal Price { get; set; }
         public decimal SKU { get; set;}
         public int CategoryId { get; set; }
+        public int SizeId { get; set; }
+
         public Category Category { get; set; }
         public List<ProductImage> ProductImages { get; set; }
-        public List<ProductTag> ProductTags { get; set; }
+        public List<ProductSize> PrdSizes { get; set; }
 
     }
 }
