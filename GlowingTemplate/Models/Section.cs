@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using GlowingTemplate.Models.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GlowingTemplate.Models
 {
-    public class Section
+    public class Section:BaseEntity
     {
-        public int Id { get; set; }
+        
         public string Title { get; set; }
         public string Description { get; set; }
         public string? ImageUrl { get; set; }

@@ -16,6 +16,7 @@ namespace GlowingTemplate.Controllers
         }
         public async Task<IActionResult> Index()
         {
+          
             HomeVM homeVm = new HomeVM()
             {
                 Sliders = await _context.Sliders.OrderByDescending(s => s.Id).Take(3).ToListAsync(),

@@ -1,8 +1,9 @@
-﻿namespace GlowingTemplate.Models
+﻿using GlowingTemplate.Models.Entity;
+
+namespace GlowingTemplate.Models
 {
-    public class Size
+    public class Size:BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

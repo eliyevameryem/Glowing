@@ -1,7 +1,9 @@
 ﻿using GlowingTemplate.DAL;
 using GlowingTemplate.Models;
+using GlowingTemplate.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace GlowingTemplate.Controllers
 {
@@ -27,6 +29,50 @@ namespace GlowingTemplate.Controllers
 
 
             return View(product);
+        }
+
+        public IActionResult AddBasket(int id)
+        {
+            var product=_context.Products.FirstOrDefault(i => i.Id == id);
+            if (product == null) return NotFound();
+            List<BasketCookieVM> basket;
+
+            if (Request.Cookies["Basket"]==null)
+            {
+                BasketCookieVM basketCookieVM = new BasketCookieVM()
+                {
+                    Id = id,
+                    Count = 1
+                };
+                basket = new List<BasketCookieVM>();
+                basket.Add(basketCookieVM);
+            }
+            else
+            {
+                basket = JsonConvert.DeserializeObject<List<BasketCookieVM>>(Request.Cookies["Basket"]);
+                var existBasket=basket.FirstOrDefault(p=>p.Id== id);
+                if (existBasket!=null)
+                {
+                    existBasket.Count += 1;
+                }
+                else
+                {
+                    BasketCookieVM basketCookieVM = new BasketCookieVM()
+                    {
+                        Id = id,
+                        Count = 1
+                    };
+                    basket.Add(basketCookieVM);
+                }
+            }
+            return RedirectToAction("Index", "Home");
+
+        }
+
+        public IActionResult GetBasket()
+        {
+            var cookie = Request.Cookies["Basket"];
+            return Content(cookie);
         }
     }
 }

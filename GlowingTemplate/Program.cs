@@ -15,9 +15,9 @@ namespace GlowingTemplate
             builder.Services.AddDbContext<AppDbContext>(opt=>{
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
             });
-
+            builder.Services.AddSession();
             var app = builder.Build();
-
+            app.UseSession();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

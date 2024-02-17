@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GlowingTemplate.Models.Entity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GlowingTemplate.Models
 {
-    public class Slider
+    public class Slider:BaseEntity
     {
-        public int Id { get; set; }
         [MaxLength(15)]
         public string Title { get; set; }
         [MaxLength(50)]
