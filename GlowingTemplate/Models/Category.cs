@@ -1,9 +1,11 @@
-﻿namespace GlowingTemplate.Models
+﻿using GlowingTemplate.Models.Entity;
+
+namespace GlowingTemplate.Models
 {
-    public class Category
+    public class Category:BaseEntity
     {
-        public int Id { get; set; }
+
         public string Name { get; set; }
-        public List<Product> Products { get; set; }
+        public List<Product>? Products { get; set; }
     }
 }

@@ -9,12 +9,12 @@ namespace GlowingTemplate.Areas.Manage.ViewModels
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public decimal SKU { get; set; }
-        public int CategoryId { get; set; }
-        public int SizeId { get; set; }
+        public string SKU { get; set; }
+        public int? CategoryId { get; set; }
+        public int Size { get; set; }
 
         public List<Category>? Categories { get; set; }
-        public List<Size>? Sizes { get; set; }
+       
         [Required]
         public IFormFile MainPhoto { get; set; }
         [Required]

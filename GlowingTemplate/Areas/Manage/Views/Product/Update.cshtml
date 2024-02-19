@@ -40,7 +40,7 @@
                     <label asp-for="CategoryId">Category</label>
                     <select asp-for="CategoryId" class="form-control" id="Category" placeholder="Category">
                         <option selection value="0">Choose Category</option>
-                        @foreach (Category item in ViewBag.Category)
+                        @foreach (Category item in ViewBag.Categories)
                         {
                             <option value="@item.Id">@item.Name</option>
                         }
@@ -49,26 +49,18 @@
 
                 </div>
                 <div class="form-group">
-                    <label asp-for="SizeId">Size</label>
-                    <select asp-for="SizeId" class="form-control" id="SizeId" placeholder="SizeId">
-                        <option selection value="0">Choose Size</option>
-
-                        @foreach (Size item in ViewBag)
-                        {
-                            <option value="@item.Id">@item.Name</option>
-                        }
-                    </select> 
-                    <span asp-validation-for="SizeId" style="color:red"></span>
-
+                    <label asp-for="Size" class="form-label">Size</label>
+                    <input class="form-control" asp-for="Size">
+                    <span asp-validation-for="Size" style="color:red"></span>
                 </div>
                 <div class="mb-3 col-md-4">
-                    <img src="~/upload/product/@Model.ProductImagesVM.FirstOrDefault(p=>p.IsPrime==true)?.ImgUrl"  />
+                    <img src="~/upload/product/@Model.ProductImagesVM.FirstOrDefault(p=>p.IsPrime==true)?.ImgUrl"   />
                     <label asp-for="MainPhoto" class="form-label">MainPhoto</label>
                     <input class="form-control" asp-for="MainPhoto">
                     <span asp-validation-for="MainPhoto" style="color:red"></span>
                 </div>
                 <div class="mb-3 col-md-4">
-                    <img src="~/upload/product/@Model.ProductImagesVM.FirstOrDefault(p=>p.IsPrime==true)?.ImgUrl" />
+                    <img src="~/upload/product/@Model.ProductImagesVM.FirstOrDefault(p=>p.IsPrime==false)?.ImgUrl" />
                     <label asp-for="HoverPhoto" class="form-label">HoverPhoto</label>
                     <input class="form-control" asp-for="HoverPhoto">
                     <span asp-validation-for="HoverPhoto" style="color:red"></span>

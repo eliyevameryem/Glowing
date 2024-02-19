@@ -4,6 +4,7 @@ using GlowingTemplate.DAL;
 using GlowingTemplate.Helpers;
 using GlowingTemplate.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,11 +21,12 @@ namespace GlowingTemplate.Areas.Manage.Controllers
             this._context = context;
             this._env = env;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            ViewBag.Size = await _context.Products.ToListAsync();
+            int take = 3;
             ViewBag.Categories = await _context.Categories.ToListAsync();
             List<Product> products = await _context.Products
+                .Skip((page - 1) * take).Take(take)
                 .Include(p => p.ProductImages)
                 .Include(p => p.Category)
                 .Include(p=>p.ProductImages)
@@ -34,14 +36,12 @@ namespace GlowingTemplate.Areas.Manage.Controllers
         }
         public async Task<IActionResult> Create()
         {
-            ViewBag.Size=await _context.Products.ToListAsync();
             ViewBag.Categories = await _context.Categories.ToListAsync();
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Create(ProductCreateVM productVM)
         {
-            ViewBag.Size = await _context.Products.ToListAsync();
             ViewBag.Categories = await _context.Categories.ToListAsync();
 
             if (productVM == null) return NotFound();
@@ -57,11 +57,7 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 ModelState.AddModelError("CategoryId", "There was no such category");
                 return View();
             }
-            if (!await _context.Sizes.AnyAsync(x => x.Id == productVM.SizeId))
-            {
-                ModelState.AddModelError("SizeId", "There was no such size");
-                return View();
-            }
+           
             Product product = new Product()
             {
                 Name = productVM.Name,
@@ -69,7 +65,7 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 Price = productVM.Price,
                 SKU = productVM.SKU,
                 CategoryId = productVM.CategoryId,
-                SizeId = productVM.SizeId,
+                Size = productVM.Size,
                 ProductImages = new List<ProductImage>(),
             };
             if (!productVM.MainPhoto.CheckLength(20000000))
@@ -96,39 +92,42 @@ namespace GlowingTemplate.Areas.Manage.Controllers
             {
                 IsPrime = true,
                 Product = product,
-                ImageUrl = productVM.MainPhoto.CreateFile(_env.WebRootPath, @"\upload\product\")
+                ImageUrl = productVM.MainPhoto.CreateFile(_env.WebRootPath, "upload/product")
             };
             ProductImage hoverphoto = new ProductImage()
             {
                 IsPrime = false,
                 Product = product,
-                ImageUrl = productVM.HoverPhoto.CreateFile(_env.WebRootPath, @"\upload\product\")
+                ImageUrl = productVM.HoverPhoto.CreateFile(_env.WebRootPath, "upload/product")
             };
 
             product.ProductImages.Add(mainphoto);
             product.ProductImages.Add(hoverphoto);
             TempData["Error"] = "";
-            foreach (IFormFile imgfile in productVM.Photo)
+            if(productVM.Photo != null)
             {
-                if (!imgfile.CheckLength(20000000))
+                foreach (IFormFile imgfile in productVM.Photo)
                 {
-                    TempData["Error"] += $"{imgfile.FileName} seklin olcusu coxdu ";
-                    continue;
-                }
-                if (!imgfile.CheckType("image/"))
-                {
-                    TempData["Error"] += $"{imgfile.FileName} seklin tipi uygin deyl ";
+                    if (!imgfile.CheckLength(20000000))
+                    {
+                        TempData["Error"] += $"{imgfile.FileName} seklin olcusu coxdu ";
+                        continue;
+                    }
+                    if (!imgfile.CheckType("image/"))
+                    {
+                        TempData["Error"] += $"{imgfile.FileName} seklin tipi uygun deyil ";
 
-                    continue;
-                }
-                ProductImage productImage = new ProductImage()
-                {
-                    IsPrime = null,
-                    Product = product,
-                    ImageUrl = imgfile.CreateFile(_env.WebRootPath, @"\upload\product\")
-                };
-                product.ProductImages.Add(productImage);
+                        continue;
+                    }
+                    ProductImage productImage = new ProductImage()
+                    {
+                        IsPrime = null,
+                        Product = product,
+                        ImageUrl = imgfile.CreateFile(_env.WebRootPath, "upload/product")
+                    };
+                    product.ProductImages.Add(productImage);
 
+                }
             }
 
             
@@ -144,7 +143,7 @@ namespace GlowingTemplate.Areas.Manage.Controllers
 
         public async Task<IActionResult> Update(int id)
         {
-            ViewBag.Size = await _context.Products.ToListAsync();
+            
             ViewBag.Categories = await _context.Categories.ToListAsync();
             Product exist=await _context.Products
                 .Include(c=>c.Category)
@@ -159,7 +158,7 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 Price = exist.Price,
                 SKU = exist.SKU,
                 CategoryId= exist.CategoryId,
-                SizeId= exist.SizeId,
+                Size= exist.Size,
                 ProductImagesVM=new List<ProductImageVM>()
 
             };
@@ -187,12 +186,12 @@ namespace GlowingTemplate.Areas.Manage.Controllers
 
         public async Task<IActionResult> Update(int id, ProductUpdateVM productUpdateVM)
         {
-            ViewBag.Size = await _context.Products.ToListAsync();
             ViewBag.Categories = await _context.Categories.ToListAsync();
             Product exist = await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.ProductImages)
                 .FirstOrDefaultAsync(x => x.Id == id);
+
             if (exist == null) return NotFound();
 
             if (ModelState.IsValid)
@@ -208,14 +207,11 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 ModelState.AddModelError("CategoryId", "There was no such category");
                 return View();
             }
-            if (!await _context.Sizes.AnyAsync(x => x.Id == productUpdateVM.SizeId))
-            {
-                ModelState.AddModelError("SizeId", "There was no such size");
-                return View();
-            }
+           
 
             exist.CategoryId = productUpdateVM.CategoryId;
-            exist.SizeId = productUpdateVM.SizeId;
+            exist.Name= productUpdateVM.Name;
+            exist.Size = productUpdateVM.Size;
             exist.Price = productUpdateVM.Price;
             exist.SKU = productUpdateVM.SKU;
             exist.Description = productUpdateVM.Description;
@@ -235,10 +231,10 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 }
 
                 var existMainPhoto = exist.ProductImages.FirstOrDefault(p => p.IsPrime == true);
-                existMainPhoto.ImageUrl.DeleteFile(_env.WebRootPath, @"/upload/product/");
+                existMainPhoto.ImageUrl.DeleteFile(_env.WebRootPath, "upload/product");
                 ProductImage productImage = new ProductImage()
                 {
-                    ImageUrl = productUpdateVM.MainPhoto.CreateFile(_env.WebRootPath, @"/upload/product/"),
+                    ImageUrl = productUpdateVM.MainPhoto.CreateFile(_env.WebRootPath, "upload/product"),
                     ProductId = exist.Id,
                     IsPrime = true
 
@@ -262,10 +258,10 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 }
 
                 var existHoverPhoto = exist.ProductImages.FirstOrDefault(p => p.IsPrime == false);
-                existHoverPhoto.ImageUrl.DeleteFile(_env.WebRootPath, @"/upload/product/");
+                existHoverPhoto.ImageUrl.DeleteFile(_env.WebRootPath, "upload/product");
                 ProductImage productImage = new ProductImage()
                 {
-                    ImageUrl = productUpdateVM.HoverPhoto.CreateFile(_env.WebRootPath, @"/upload/product/"),
+                    ImageUrl = productUpdateVM.HoverPhoto.CreateFile(_env.WebRootPath, "upload/product"),
                     ProductId = exist.Id,
                     IsPrime = false
 
@@ -282,7 +278,7 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 foreach (var item in removeList)
                 {
                     exist.ProductImages.Remove(item);
-                    item.ImageUrl.DeleteFile(_env.WebRootPath, @"\upload\product\");
+                    item.ImageUrl.DeleteFile(_env.WebRootPath, "upload/product");
                 }
             }
 
@@ -304,13 +300,13 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                     {
                         IsPrime = null,
                         ProductId = exist.Id,
-                        ImageUrl = imgFile.CreateFile(_env.WebRootPath, "/Upload/Product/")
+                        ImageUrl = imgFile.CreateFile(_env.WebRootPath, "upload/product")
                     };
                     exist.ProductImages.Add(productImage);
                 }
             }
 
-        await _context.Products.AddAsync(exist);
+        
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

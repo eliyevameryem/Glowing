@@ -46,7 +46,7 @@
                             <div class="card card-product grid-1 bg-transparent border-0">
                                 <figure class="card-img-top position-relative mb-7 overflow-hidden ">
                                     <a href="shop/product-details-v1.html" class="hover-zoom-in d-block" title="Enriched Hand &amp; Body Wash">
-                                        <img src="#" data-src="~/upload/product/@item.ProductImages" class="img-fluid lazy-image w-100" alt="Enriched Hand &amp; Body Wash" width="330" height="440">
+                                        <img src="~/upload/product/@item.ProductImages.FirstOrDefault(i=>i.IsPrime==true)" class="img-fluid lazy-image w-100" alt="Enriched Hand &amp; Body Wash" width="330" height="440">
                                     </a>
                                     <div class="position-absolute product-flash z-index-2 "><span class="badge badge-product-flash on-new">New</span></div>
                                     <div class="position-absolute d-flex z-index-2 product-actions  horizontal">
@@ -54,7 +54,7 @@
                                             <svg class="icon icon-shopping-bag-open-light">
                                                 <use xlink:href="#icon-shopping-bag-open-light"></use>
                                             </svg>
-                                        </a><a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Quick View">
+                                        </a><a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view" asp-controller="Shop" asp-action="Detail" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Quick View">
                                             <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
                                                 <svg class="icon icon-eye-light">
                                                     <use xlink:href="#icon-eye-light"></use>

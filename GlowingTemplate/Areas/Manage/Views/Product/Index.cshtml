@@ -1,12 +1,13 @@
-﻿@using GlowingTemplate.Models;
+﻿@using GlowingTemplate.Areas.Manage.ViewModels;
+@using GlowingTemplate.Models;
 
-@model List<Product>
+﻿@model PaginateVM<Product>
 @{
-    int count = 0;
+    int count = (ViewBag.CurrentPage - 1) * 3;
 }
 
 
-<div class="col-lg-6 grid-margin stretch-card">
+<div class="grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Product</h4>
@@ -33,26 +34,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (Product product in Model.Items)
                         {
                             count++;
                             <tr>
 
                                 <td>@count</td>
-                                <td>@item.Name</td>
-                                <td>@item.Description</td>
+                                <td>@product.Name</td>
+                                <td>@product.Description</td>
+                                <td>@product.Price</td>
+                                <td>@product.SKU</td>
+                                <td>@product.Size</td>
+                                <td>@product.Category.Name</td>
 
-                                <td>@item.Price</td>
+                                <td><img src="~/upload/product/@product.ProductImages.FirstOrDefault(p=>p.IsPrime==true).ImageUrl" /></td>
 
-                                <td>@item.SKU</td>
-                                <td>@item.Category.Name</td>
-                               @*  <td>@item.SizeId</td> *@
-
-                                
-                               <td><img src="~/upload/product/@item.ProductImages.FirstOrDefault(p=>p.IsPrime==true).ImageUrl?" /></td>
                                 <td>
-                                    <a class="btn btn-info" asp-controller="Product" asp-action="Update" asp-area="Manage" asp-route-id=@item.Id>Update</a>
-                                    <a class="btn btn-danger" asp-controller="Product" asp-action="Delete" asp-area="Manage" asp-route-id=@item.Id>Delete</a>
+                                    <a class="btn btn-info" asp-controller="Product" asp-action="Update" asp-area="Manage" asp-route-id=@product.Id>Update</a>
+                                    <a class="btn btn-danger" asp-controller="Product" asp-action="Delete" asp-area="Manage" asp-route-id=@product.Id>Delete</a>
 
                                 </td>
 
@@ -64,4 +63,25 @@
             </div>
         </div>
     </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item @(Model.CurrentPage==1?"disabled":"")">
+                <a class="page-link" asp-route-page="@(Model.CurrentPage-1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @for (int i = 0; i < Model.TotalPage; i++)
+            {
+                <li class="page-item @(Model.CurrentPage==(i+1)?"active":"")"><a class="page-link" asp-route-page="@(i+1)">@(i + 1)</a></li>
+            }
+
+            <li class="page-item @(Model.CurrentPage>=Model.TotalPage?"disabled":"")">
+                <a class="page-link" asp-route-page="@(Model.CurrentPage+1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
+

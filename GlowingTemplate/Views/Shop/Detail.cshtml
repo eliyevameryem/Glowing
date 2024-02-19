@@ -1,6 +1,5 @@
 ﻿
-@model Product
-
+@model List<Product>
 
 <main id="content" class="wrapper layout-page">
 <section class="z-index-2 position-relative pb-2 mb-12">
@@ -16,167 +15,256 @@
 </div>
 </div>
 </section>
-<section class="container pt-6 pb-13 pb-lg-20">
+<section class="container pt-6 pb-14 pb-lg-20">
 <div class="row ">
-<div class="col-md-6 pe-lg-13 pb-12">
-<div class="position-sticky top-0">
-<div class="slick-slider g-0 " data-slick-options="{&#34;arrows&#34;:false,&#34;imageSize&#34;:{&#34;img&#34;:{&#34;height&#34;:720,&#34;width&#34;:540}},&#34;items&#34;:[{&#34;img&#34;:&#34;/assets/images/shop/product-gallery-05.jpg&#34;},{&#34;img&#34;:&#34;/assets/images/shop/product-gallery-06.jpg&#34;},{&#34;img&#34;:&#34;/assets/images/shop/product-gallery-07.jpg&#34;},{&#34;img&#34;:&#34;/assets/images/shop/product-gallery-08.jpg&#34;}],&#34;slidesToShow&#34;:1}">
-<a href="~/assets/images/shop/product-gallery-05.jpg" data-gallery="gallery4"><img src="#" data-src="~/assets/images/shop/product-gallery-05.jpg" class="lazy-image" width="540" height="720" alt></a>
-<a href="~/assets/images/shop/product-gallery-06.jpg" data-gallery="gallery4"><img src="#" data-src="~/assets/images/shop/product-gallery-06.jpg" class="lazy-image" width="540" height="720" alt></a>
-<a href="~/assets/images/shop/product-gallery-07.jpg" data-gallery="gallery4"><img src="#" data-src="~/assets/images/shop/product-gallery-07.jpg" class="lazy-image" width="540" height="720" alt></a>
-<a href="~/assets/images/shop/product-gallery-08.jpg" data-gallery="gallery4"><img src="#" data-src="~/assets/images/shop/product-gallery-08.jpg" class="lazy-image" width="540" height="720" alt></a>
+<div class="col-md-6 pe-lg-13">
+<div class="position-relative">
+<div class="position-absolute z-index-2 w-100 d-flex justify-content-end">
+<div class="p-6">
+<a href="#" class="d-flex align-items-center justify-content-center product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add to wishlist">
+<svg class="icon fs-4">
+<use xlink:href="#icon-star-light"></use>
+</svg>
+</a>
+<a href="compare.html" class="d-flex align-items-center justify-content-center mt-5 product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+<svg class="icon fs-4">
+<use xlink:href="#icon-arrows-left-right-light"></use>
+</svg>
+</a>
+</div>
+</div>
+<div id="slider" class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0" data-slick-options="{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#slider-thumb&#34;,&#34;dots&#34;:false,&#34;slidesToShow&#34;:1}">
+<a href="~/assets/images/shop/product-gallery-05.jpg" data-gallery="gallery1"><img src="#" data-src="~/assets/images/shop/product-gallery-05.jpg" class="h-auto lazy-image" width="540" height="720" alt></a>
+<a href="~/assets/images/shop/product-gallery-06.jpg" data-gallery="gallery1"><img src="#" data-src="~/assets/images/shop/product-gallery-06.jpg" class="h-auto lazy-image" width="540" height="720" alt></a>
+<a href="~/assets/images/shop/product-gallery-07.jpg" data-gallery="gallery1"><img src="#" data-src="~/assets/images/shop/product-gallery-07.jpg" class="h-auto lazy-image" width="540" height="720" alt></a>
+<a href="~/assets/images/shop/product-gallery-08.jpg" data-gallery="gallery1"><img src="#" data-src="~/assets/images/shop/product-gallery-08.jpg" class="h-auto lazy-image" width="540" height="720" alt></a>
+</div>
+</div>
+<div class="mt-6">
+<div id="slider-thumb" class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4" data-slick-options="{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#slider&#34;,&#34;dots&#34;:false,&#34;focusOnSelect&#34;:true,&#34;slidesToShow&#34;:5,&#34;vertical&#34;:false}">
+<img src="#" data-src="~/assets/images/shop/product-gallery-05-154x205.jpg" class="mx-3 px-0 h-auto cursor-pointer lazy-image" width="75" height="100" alt>
+<img src="#" data-src="~/assets/images/shop/product-gallery-06-154x205.jpg" class="mx-3 px-0 h-auto cursor-pointer lazy-image" width="75" height="100" alt>
+<img src="#" data-src="~/assets/images/shop/product-gallery-07-154x205.jpg" class="mx-3 px-0 h-auto cursor-pointer lazy-image" width="75" height="100" alt>
+<img src="#" data-src="~/assets/images/shop/product-gallery-08-154x205.jpg" class="mx-3 px-0 h-auto cursor-pointer lazy-image" width="75" height="100" alt>
 </div>
 </div>
 </div>
-<div class="col-md-6 pt-md-0 pt-10">
+@foreach(var item in Model)
+{
+    <div class="col-md-6 pt-md-0 pt-10">
 <p class="d-flex align-items-center mb-6">
-<span class="text-decoration-line-through">39.00</span>
-<span class="fs-18px text-body-emphasis ps-6 fw-bold">29.00</span>
-<span class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3">20%</span>
+
+<span class="fs-18px text-body-emphasis ps-6 fw-bold">@item.Price</span>
+
 </p>
-<h1 class="mb-4 pb-2 fs-4">Natural Coconut Cleansing Oil</h1>
-<div class="d-flex align-items-center fs-15px mb-6">
-<p class="mb-0 fw-semibold text-body-emphasis">4.86</p>
-<div class="d-flex align-items-center fs-12px justify-content-center mb-0 px-6 rating-result">
-<div class="rating">
-<div class="empty-stars">
-<span class="star">
-<svg class="icon star-o">
-<use xlink:href="#star-o"></use>
-</svg>
-</span>
-<span class="star">
-<svg class="icon star-o">
-<use xlink:href="#star-o"></use>
-</svg>
-</span>
-<span class="star">
-<svg class="icon star-o">
-<use xlink:href="#star-o"></use>
-</svg>
-</span>
-<span class="star">
-<svg class="icon star-o">
-<use xlink:href="#star-o"></use>
-</svg>
-</span>
-<span class="star">
-<svg class="icon star-o">
-<use xlink:href="#star-o"></use>
-</svg>
-</span>
+<h1 class="mb-4 pb-2 fs-4">@item.Name</h1>
+<p class="fs-15px">@item.Description</p>
+
+<div class="progress mb-7" style="height: 4px;">
+<div class="progress-bar w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<div class="filled-stars" style="width: 100%">
-<span class="star">
-<svg class="icon star text-primary">
-<use xlink:href="#star"></use>
-</svg>
-</span>
-<span class="star">
-<svg class="icon star text-primary">
-<use xlink:href="#star"></use>
-</svg>
-</span>
-<span class="star">
-<svg class="icon star text-primary">
-<use xlink:href="#star"></use>
-</svg>
-</span>
-<span class="star">
-<svg class="icon star text-primary">
-<use xlink:href="#star"></use>
-</svg>
-</span>
-<span class="star">
-<svg class="icon star text-primary">
-<use xlink:href="#star"></use>
-</svg>
-</span>
-</div>
-</div></div>
-<a href="#" class="border-start ps-6 text-body">Read 2947 reviews</a>
-</div>
-<p class="fs-15px">Niacinamide and Vitamin C are two anti-aging superstars but not usually formulated together because of their different pH levels.</p>
-<form>
+<form class="mb-9 pb-2">
 <div class="row align-items-end">
-<div class="col-sm-6 form-group">
-<label class="text-body-emphasis fw-semibold py-5" for="size">Select a size: </label>
-<select name="size" class="form-control w-100 product-info-2-quantity" id="size">
-<option value="50ml" selected>50ml</option>
-<option value="70ml">70ml</option>
-<option value="90ml">90ml</option>
-<option value="100ml">100ml</option>
-</select>
+<div class="form-group col-sm-4">
+<label class=" text-body-emphasis fw-semibold fs-15px pb-6" for="number">Quantity: </label>
+<div class="input-group position-relative w-100 input-group-lg">
+<a href="#" class="shop-down position-absolute translate-middle-y top-50 start-0 ps-7 product-info-2-minus"><i class="far fa-minus"></i></a>
+<input name="number" type="number" id="number" class="product-info-2-quantity form-control w-100 px-6 text-center" value="1" required>
+<a href="#" class="shop-up position-absolute translate-middle-y top-50 end-0 pe-7 product-info-2-plus"><i class="far fa-plus"></i>
+</a>
 </div>
-<div class="col-sm-6 form-group">
-<label class="text-body-emphasis fw-semibold py-5" for="quantity">Quantity: </label>
-<select name="size" class="form-control w-100 product-info-2-quantity" id="quantity">
-<option value="1" selected>1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-</select>
 </div>
-<div class="col-12">
-<button type="submit" class="btn btn-lg btn-dark btn-block mb-7 mt-8 w-100 btn-hover-bg-primary btn-hover-border-primary">
-Add To Bag
+<div class="col-sm-8 pt-9 mt-2 mt-sm-0 pt-sm-0">
+<button type="submit" class="btn-hover-bg-primary btn-hover-border-primary btn btn-lg btn-dark w-100">Add To Bag
 </button>
 </div>
 </div>
 </form>
-<div class="d-flex align-items-center flex-wrap">
-<a href="compare.html" class="text-decoration-none fw-semibold fs-6 me-9 pe-2 d-flex align-items-center">
-<svg class="icon fs-5">
-<use xlink:href="#icon-arrows-left-right-light"></use>
-</svg>
-<span class="ms-4 ps-2">Compare</span>
-</a>
-<a href="#" class="text-decoration-none fw-semibold fs-6 me-9 pe-2 d-flex align-items-center">
-<svg class="icon fs-5">
-<use xlink:href="#icon-star-light"></use>
-</svg>
-<span class="ms-4 ps-2">Add to wishlist</span>
-</a>
-<a href="#" class="text-decoration-none fw-semibold fs-6 me-9 pe-2 d-flex align-items-center">
-<svg class="icon fs-5">
-<use xlink:href="#icon-ShareNetwork"></use>
-</svg>
-<span class="ms-4 ps-2">Share</span>
-</a>
+<p class="mb-4 pb-2">
+<span class="text-body-emphasis">
+<svg class="icon fs-28px me-2 pe-4">
+<use xlink:href="#icon-delivery-1"></use>
+</svg>Get it between:
+</span> Feb 3 - Feb 14,2021
+</p>
+<p class="mb-4 pb-2">
+<span class="text-body-emphasis">
+<svg class="icon fs-28px me-2 pe-4">
+<use xlink:href="#icon-Package"></use>
+</svg>Free Shipping & Returns:
+</span> On all orders over $200
+</p>
+<div class="card border-0 bg-body-tertiary rounded text-center mt-7">
+<div class="pt-8 px-5">
+<img class="img-fluid" src="~/assets/images/shop/product-info-2.png" alt="pay" width="357" height="28">
+</div>
+<div class="card-body pt-6 pb-7">
+<p class="fs-14px fw-normal mb-0">Guarantee safe &amp; secure checkout</p>
+</div>
 </div>
 <ul class="single-product-meta list-unstyled border-top pt-7 mt-7">
 <li class="d-flex mb-4 pb-2 align-items-center">
 <span class="text-body-emphasis fw-semibold fs-14px">Sku:</span>
-<span class="ps-4">SF09281</span>
+<span class="ps-4">@item.SKU</span>
 </li>
 <li class="d-flex mb-4 pb-2 align-items-center">
 <span class="text-body-emphasis fw-semibold fs-14px">Categories:</span>
-<span class="ps-4">Makeup, Skincare</span>
+<span class="ps-4">@item.Category</span>
 </li>
 </ul>
-<div class="mt-11">
-<div class="accordion accordion-flush" id="accordionFlushExample">
-<div class="accordion-item pb-4">
-<h2 class="accordion-header" id="flush-headingOne">
-<a class="product-info-accordion text-decoration-none" href="#" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-<span class="fs-4">Product Detail</span>
-</a>
-</h2>
+<ul class="list-inline d-flex justify-content-start mb-0 fs-6">
+<li class="list-inline-item">
+<a class="text-body text-decoration-none product-info-share product-info-share" href="#"><i class="fab fa-facebook-f me-4"></i> Facebook</a>
+</li>
+<li class="list-inline-item ms-7">
+<a class="text-body text-decoration-none product-info-share product-info-share" href="#"><i class="fab fa-instagram me-4"></i> Instagram</a>
+</li>
+<li class="list-inline-item ms-7">
+<a class="text-body text-decoration-none product-info-share product-info-share" href="#"><i class="fab fa-youtube me-4"></i> Youtube</a>
+</li>
+</ul>
 </div>
-<div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-<div class="pt-8 pb-3">
-<p class="fw-semibold text-body-emphasis mb-2 pb-4">For Normal, Oily, Combination Skin Types</p>
+
+}
+</section>
+<section class="mt-lg-n5 pb-13 pb-lg-16">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<h3>Frequently Bought Togheter</h3>
+<p class="text-secondary text-body-emphasis  mb-7 mt-5">You will get <a class="text-primary" href="#">20%
+OFF</a> on each product</p>
+</div>
+<div class="col-12">
+<form class="row align-items-center frequently-bought-togheter">
+<div class="col-4 col-md-2 frequently-bought-togheter-item">
+<div class="position-relative">
+<div class="position-absolute pos-fixed-top-right z-index-2 w-100 p-5">
+<div class="p-3 content-change-vertical">
+<a href="#" title class="add-to-item bg-body text-body-emphasis hover-dark shadow-1 d-flex justify-content-center align-items-center rounded-circle float-end" style="width:32px;height:32px" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" data-bs-added="Added" data-bs-title="Add Item">
+<svg class="icon icon-plus fs-20px">
+<use xlink:href="#icon-plus"></use>
+</svg>
+</a>
+<input class="form-check-input d-none" type="checkbox" name="Facial cleanser">
+</div>
+</div>
+<img class="w-100 lazy-image" src="#" data-src="~/assets/images/shop/product-gallery-05.jpg" alt="Frequently Bought Togheter" width="170" height="227">
+</div>
+</div>
+<div class="col-4 col-md-2 frequently-bought-togheter-item">
+<div class="position-relative">
+<div class="position-absolute pos-fixed-top-right z-index-2 w-100 p-5">
+<div class="p-3 content-change-vertical">
+<a href="#" title class="add-to-item bg-body text-body-emphasis hover-dark shadow-1 d-flex justify-content-center align-items-center rounded-circle float-end" style="width:32px;height:32px" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" data-bs-added="Added" data-bs-title="Add Item">
+<svg class="icon icon-plus fs-20px">
+<use xlink:href="#icon-plus"></use>
+</svg>
+</a>
+<input class="form-check-input d-none" type="checkbox" name="Facial cleanser">
+</div>
+</div>
+<img class="w-100 lazy-image" src="#" data-src="~/assets/images/shop/product-09.jpg" alt="Frequently Bought Togheter" width="170" height="227">
+</div>
+</div>
+<div class="col-4 col-md-2 frequently-bought-togheter-item">
+<div class="position-relative">
+<div class="position-absolute pos-fixed-top-right z-index-2 w-100 p-5">
+<div class="p-3 content-change-vertical">
+<a href="#" title class="add-to-item bg-body text-body-emphasis hover-dark shadow-1 d-flex justify-content-center align-items-center rounded-circle float-end" style="width:32px;height:32px" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" data-bs-added="Added" data-bs-title="Add Item">
+<svg class="icon icon-plus fs-20px">
+<use xlink:href="#icon-plus"></use>
+</svg>
+</a>
+<input class="form-check-input d-none" type="checkbox" name="Facial cleanser">
+</div>
+</div>
+<img class="w-100 lazy-image" src="#" data-src="~/assets/images/shop/product-08.jpg" alt="Frequently Bought Togheter" width="170" height="227">
+</div>
+</div>
+<div class="col-md-6 mt-md-0 mt-9">
+<div class="card border-0">
+<div class="card-body p-0">
+<p class="card-text fs-6 mb-7">Total price: <span class="text-body-emphasis fs-5 ps-5 fw-bold">$82.00</span></p>
+<button type="submit" class="btn btn-dark btn-hover-bg-primary px-12 border-transparent">Add
+Selected Items
+</button>
+</div>
+</div>
+</div>
+<div class="col-12 mt-5">
+<div class="form-check text-body-emphasis mt-5 mb-6">
+<input class="form-check-input form-check-input-dark rounded-0" name="customCheck1" type="checkbox" value id="customCheck1" checked>
+<label class="form-check-label" for="customCheck1">
+<span class="text-body">This items:</span> Natural Coconut Cleansing Oil
+</label>
+</div>
+<div class="form-check text-body-emphasis mb-6">
+<input class="form-check-input form-check-input-dark rounded-0" name="customCheck2" type="checkbox" value id="customCheck2" checked>
+<label class="form-check-label" for="customCheck2">
+Daily Perfecting Cream - $29.00
+</label>
+</div>
+<div class="form-check text-body-emphasis mb-6">
+<input class="form-check-input form-check-input-dark rounded-0" name="customCheck3" type="checkbox" value id="customCheck3" checked>
+<label class="form-check-label" for="customCheck3">
+Dry-Touch Oil Mist - $29.00
+</label>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<div class="border-top w-100 h-1px"></div>
+<section class="container pt-15 pb-12 pt-lg-17 pb-lg-20">
+<div class="collapse-tabs">
+<ul class="nav nav-tabs border-0 justify-content-center pb-12 d-none d-md-flex" id="productTabs" role="tablist">
+<li class="nav-item" role="presentation">
+<button class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis active" id="product-details-tab" data-bs-toggle="tab" data-bs-target="#product-details" type="button" role="tab" aria-controls="product-details" aria-selected="true">Product Details
+</button>
+</li>
+<li class="nav-item" role="presentation">
+<button class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis" id="how-to-use-tab" data-bs-toggle="tab" data-bs-target="#how-to-use" type="button" role="tab" aria-controls="how-to-use" aria-selected="false">How To Use
+</button>
+</li>
+<li class="nav-item" role="presentation">
+<button class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis" id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients" type="button" role="tab" aria-controls="ingredients" aria-selected="false">Ingredients
+</button>
+</li>
+</ul>
+<div class="tab-content">
+<div class="tab-inner">
+<div class="tab-pane fade active show" id="product-details" role="tabpanel" aria-labelledby="product-details-tab" tabindex="0">
+<div class="card border-0 bg-transparent">
+<div class="card-header border-0 bg-transparent px-0 py-4 product-tabs-mobile d-block d-md-none">
+<h5 class="mb-0">
+<button class="btn lh-2 fs-5 py-3 px-6 shadow-none w-100 border text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-product-detail" aria-expanded="false" aria-controls="collapse-product-detail">
+Product Detail
+</button>
+</h5>
+</div>
+<div class="collapse show border-md-0 border p-md-0 p-6" id="collapse-product-detail">
+<div class="row">
+<div class="col-12 col-lg-6 pe-lg-10 pe-xl-20">
+<img src="#" data-src="~/assets/images/shop/product-details-img.jpg" class="w-100 lazy-image" alt width="470" height="540">
+</div>
+<div class="pb-3 col-12 col-lg-6 pt-12 pt-lg-0">
+<p class="fw-semibold text-body-emphasis mb-2 pb-4">For Normal, Oily,
+Combination Skin
+Types</p>
 <p class="mb-2 pb-4">Complexion-perfecting natural foundation enriched with
 antioxidant-packed superfruits, vitamins, and other skin-nourishing
 nutrients. Creamy liquid formula sets with a pristine matte finish
 for soft, velvety smooth skin.</p>
-<p class="mb-7">Say hello to flawless, long-lasting foundation that
+<p class="mb-9">Say hello to flawless, long-lasting foundation that
 comes in 7
 melt-into-your-skin shades. This lightweight, innovative formula
 creates a smooth, natural matte finish that won’t settle into lines.
 It’s the perfect fit for your skin. 1 fl. oz.</p>
 <p class="fw-semibold text-body-emphasis mb-2 pb-4">Benefits</p>
-<ul class="mb-5 ps-6">
+<ul class="mb-7 ps-6">
 <li class="mb-1">Buildable medium-to-full coverage</li>
 <li class="mb-1">Weightless, airy feel—no caking!</li>
 <li class="mb-1">Long-wearing</li>
@@ -203,26 +291,38 @@ It’s the perfect fit for your skin. 1 fl. oz.</p>
 </div>
 </div>
 </div>
-<div class="accordion-item pb-4 mt-7">
-<h2 class="accordion-header" id="flush-headingTwo">
-<a class="product-info-accordion collapsed text-decoration-none" href="#" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-<span class="fs-4">How To Use</span>
-</a>
-</h2>
 </div>
-<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-<div class="pt-8 pb-3">
-<p class="fw-semibold text-body-emphasis mb-2 pb-4">Follow these safety guidelines when
+</div>
+</div>
+<div class="tab-pane fade" id="how-to-use" role="tabpanel" aria-labelledby="how-to-use-tab" tabindex="0">
+<div class="card border-0 bg-transparent">
+<div class="card-header border-0 bg-transparent px-0 py-4 product-tabs-mobile d-block d-md-none">
+<h5 class="mb-0">
+<button class="btn lh-2 fs-5 py-3 px-6 shadow-none w-100 border text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-to-use" aria-expanded="false" aria-controls="collapse-to-use">How To Use
+</button>
+</h5>
+</div>
+<div class="collapse border-md-0 border p-md-0 p-6" id="collapse-to-use">
+<div class="pb-3">
+<p class="fw-semibold text-body-emphasis mb-2 pb-4">Follow these safety guidelines
+when
 using cosmetics products of any type:</p>
 <ul class="ps-6 mb-8">
-<li class="mb-3">Read the label. Follow all directions and heed all warnings.
+<li class="mb-3">Read the label.
+Follow all directions and heed all warnings.
 </li>
-<li class="mb-3">Wash your hands before you use the product.</li>
-<li class="mb-3">Do not share makeup.</li>
-<li class="mb-3">Keep the containers clean and tightly closed when not in use,
+<li class="mb-3">Wash your hands
+before you use the product.
+</li>
+<li class="mb-3">Do not share
+makeup.
+</li>
+<li class="mb-3">Keep the
+containers clean and tightly closed when not in use,
 and protect them from temperature extremes.
 </li>
-<li class="mb-3">Throw away cosmetics if there are changes in color or smell.
+<li class="mb-3">Throw away
+cosmetics if there are changes in color or smell.
 </li>
 <li>Use aerosols or sprays cans in well-ventilated areas. Do not use them while
 you are smoking or near an open flame. It could start a fire.
@@ -230,50 +330,73 @@ you are smoking or near an open flame. It could start a fire.
 </ul>
 </div>
 </div>
-<div class="accordion-item pb-4 mt-7">
-<h2 class="accordion-header" id="flush-headingThree">
-<a class="product-info-accordion collapsed text-decoration-none" href="#" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-<span class="fs-4">Ingredients</span>
-</a>
-</h2>
 </div>
-<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-<div class="pt-8 pb-3">
+</div>
+<div class="tab-pane fade" id="ingredients" role="tabpanel" aria-labelledby="ingredients-tab" tabindex="0">
+<div class="card-header border-0 bg-transparent px-0 py-4 product-tabs-mobile d-block d-md-none">
+<h5 class="mb-0">
+<button class="btn lh-2 fs-5 py-3 px-6 shadow-none w-100 border text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-ingredients" aria-expanded="false" aria-controls="collapse-ingredients">How To Use
+</button>
+</h5>
+</div>
+<div class="collapse border-md-0 border p-md-0 p-6" id="collapse-ingredients">
+<div class="pb-3">
 <div class="table-responsive mb-5">
 <table class="table table-borderless mb-0">
 <tbody>
 <tr>
-<td class="ps-0 py-5 pe-5 text-body-emphasis">CAS</td>
-<td class="text-end py-5 ps-5 pe-0">92128-82-0, 9057-02-7</td>
+<td class="ps-0 py-5 pe-5 text-body-emphasis">CAS
+</td>
+<td class="text-end py-5 ps-5 pe-0">
+92128-82-0, 9057-02-7
+</td>
 </tr>
 <tr>
-<td class="ps-0 py-5 pe-5 text-body-emphasis">INCI</td>
-<td class="text-end py-5 ps-5 pe-0">Nannochloropsis Oculata (micro algae)
+<td class="ps-0 py-5 pe-5 text-body-emphasis">
+INCI
+</td>
+<td class="text-end py-5 ps-5 pe-0">
+Nannochloropsis Oculata (micro algae)
 extract, pullulan
 </td>
 </tr>
 <tr>
-<td class="ps-0 py-5 pe-5 text-body-emphasis">Composition</td>
-<td class="text-end py-5 ps-5 pe-0">Nannochloropsis Oculata (micro algae)
+<td class="ps-0 py-5 pe-5 text-body-emphasis">
+Composition
+</td>
+<td class="text-end py-5 ps-5 pe-0">
+Nannochloropsis Oculata (micro algae)
 extract, pullulan, water, ethanol
 </td>
 </tr>
 <tr>
-<td class="ps-0 py-5 pe-5 text-body-emphasis">Appearance</td>
-<td class="text-end py-5 ps-5 pe-0">Yellow to amber, viscous liquid</td>
+<td class="ps-0 py-5 pe-5 text-body-emphasis">
+Appearance
+</td>
+<td class="text-end py-5 ps-5 pe-0">
+Yellow to amber, viscous liquid
+</td>
 </tr>
 <tr>
-<td class="ps-0 py-5 pe-5 text-body-emphasis">Solubility</td>
-<td class="text-end py-5 ps-5 pe-0">Soluble in water &amp; ethanol</td>
+<td class="ps-0 py-5 pe-5 text-body-emphasis">
+Solubility
+</td>
+<td class="text-end py-5 ps-5 pe-0">
+Soluble in water &amp; ethanol
+</td>
 </tr>
 <tr>
-<td class="ps-0 py-5 pe-5 text-body-emphasis">Storage</td>
-<td class="text-end py-5 ps-5 pe-0">Store refrigerated (4-8oC / 39-46oF)</td>
+<td class="ps-0 py-5 pe-5 text-body-emphasis">
+Storage
+</td>
+<td class="text-end py-5 ps-5 pe-0">
+Store refrigerated (4-8oC / 39-46oF)
+</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>
+<p class="mb-0">
 Perfect for Equestrian homes or every horse lover. Designer premium
 signature aluminum alloy all Arthur Court is compliance with FDA
 regulations. Aluminum Serveware can be chilled in the freezer or

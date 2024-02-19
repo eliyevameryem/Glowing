@@ -25,7 +25,7 @@ namespace GlowingTemplate.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Category category)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }

@@ -16,8 +16,6 @@ namespace GlowingTemplate.DAL
 
         public DbSet<ProductImage> ProductImages { get; set; }
        
-        public DbSet<Size> Sizes { get; set; }
-        public DbSet<ProductSize> ProductSizes { get; set; }
 
     }
 }
