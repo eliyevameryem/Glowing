@@ -10,7 +10,7 @@ namespace GlowingTemplate.Areas.Manage.ViewModels
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string SKU { get; set; }
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public int Size { get; set; }
 
         public List<Category>? Categories { get; set; }

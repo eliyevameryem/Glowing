@@ -1,4 +1,5 @@
 using GlowingTemplate.DAL;
+using GlowingTemplate.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace GlowingTemplate
@@ -16,6 +17,8 @@ namespace GlowingTemplate
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
             });
             builder.Services.AddSession();
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddScoped<LayoutService>();
             var app = builder.Build();
             app.UseSession();
             // Configure the HTTP request pipeline.

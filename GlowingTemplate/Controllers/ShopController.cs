@@ -16,7 +16,10 @@ namespace GlowingTemplate.Controllers
         {
             _context = context;
         }
-        
+        public IActionResult Index()
+        {
+            return View();
+        }
         public async Task<IActionResult> Detail(int id)
         {
             Product product=await _context.Products.Include(i => i.ProductImages)
@@ -25,44 +28,6 @@ namespace GlowingTemplate.Controllers
 
 
             return View(product);
-        }
-
-        public IActionResult AddBasket(int id)
-        {
-            var product=_context.Products.FirstOrDefault(i => i.Id == id);
-            if (product == null) return NotFound();
-            List<BasketCookieVM> basket;
-
-            if (Request.Cookies["Basket"]==null)
-            {
-                BasketCookieVM basketCookieVM = new BasketCookieVM()
-                {
-                    Id = id,
-                    Count = 1
-                };
-                basket = new List<BasketCookieVM>();
-                basket.Add(basketCookieVM);
-            }
-            else
-            {
-                basket = JsonConvert.DeserializeObject<List<BasketCookieVM>>(Request.Cookies["Basket"]);
-                var existBasket=basket.FirstOrDefault(p=>p.Id== id);
-                if (existBasket!=null)
-                {
-                    existBasket.Count += 1;
-                }
-                else
-                {
-                    BasketCookieVM basketCookieVM = new BasketCookieVM()
-                    {
-                        Id = id,
-                        Count = 1
-                    };
-                    basket.Add(basketCookieVM);
-                }
-            }
-            return RedirectToAction("Index", "Home");
-
         }
 
         public IActionResult GetBasket()

@@ -10,7 +10,7 @@ namespace GlowingTemplate.Models
         public decimal Price { get; set; }
         public string SKU { get; set;}
         public int Size { get; set; }
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public Category Category { get; set; }
         public List<ProductImage> ProductImages { get; set; }

@@ -1,9 +1,11 @@
 ﻿using GlowingTemplate.DAL;
+using GlowingTemplate.Helpers;
 using GlowingTemplate.Models;
 using GlowingTemplate.ViewModels.Account;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GlowingTemplate.Controllers
 {
@@ -12,11 +14,15 @@ namespace GlowingTemplate.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly AppDbContext _context;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, AppDbContext context)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
+            this._roleManager = roleManager;
+            this._context = context;
         }
         public IActionResult Register()
         {
@@ -106,6 +112,44 @@ namespace GlowingTemplate.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+        public async Task<IActionResult> CreateRole()
+        {
+            foreach (var role in Enum.GetValues(typeof(UserRole)))
+            {
+                if (!await _roleManager.RoleExistsAsync(role.ToString()))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole()
+                    {
+                        Name = role.ToString(),
+                    });
+                }
+            }
 
-    }
+            return RedirectToAction(nameof(Index), "home");
+        }
+        //[Authorize]
+        //public async Task<IActionResult> MyAccount()
+        //{
+
+        //    AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+        //    if (user == null)
+        //    {
+        //        return RedirectToAction(nameof(Index), "Home");
+        //    }
+        //    List<Order> userOrders = await _context.Orders.Where(o => o.AppUserId == user.Id).Include(o => o.BasketItems).ToListAsync();
+        //    MyAccountVm accountVm = new MyAccountVm()
+        //    {
+        //        Orders = userOrders
+        //    };
+
+
+
+
+        //    return View(accountVm);
+        //}
+
+    } 
 }
+
+
+

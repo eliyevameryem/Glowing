@@ -166,54 +166,22 @@
             <p class="fs-15px mb-6 ls-1 text-body-emphasis fw-semibold">SHOP BY CATEGORIES</p><h2 class="mb-6">Because You Need Time for Yourself. <br> Blend Beauty in You</h2>
         </div>
         <div class="row mt-13">
-            <div class="col-lg-3 col-md-6 col-12" data-animate="fadeInUp">
-                <div class="card border-0">
-                    <a href="#" class="hover-shine img-scale overflow-hidden">
-                        <img class="lazy-image card-img-top img-scale-change img-fluid light-mode-img" src="#" data-src="~/assets/images/shop/product-cate.jpg" width="545" height="611" alt="Bodycare">
-                        <img class="lazy-image dark-mode-img card-img-top img-scale-change img-fluid" src="#" data-src="~/assets/images/shop/product-cate-white.jpg" width="545" height="611" alt="Bodycare">
-                    </a>
-                    <div class="card-body text-center px-0 py-7">
-                        <h4 class="card-title fw-semibold mb-5"><a href="#">Bodycare</a></h4>
-                        <p class="card-text">23 items</p>
+            @foreach (var item in Model.Categories)
+            {
+                <div class="col-lg-3 col-md-6 col-12" data-animate="fadeInUp">
+                    <div class="card border-0">
+                        <a href="#" class="hover-shine img-scale overflow-hidden">
+                            <img class="lazy-image card-img-top img-scale-change img-fluid light-mode-img" src="#" data-src="~/assets/images/shop/product-cate.jpg" width="545" height="611" alt="Bodycare">
+                            <img class="lazy-image dark-mode-img card-img-top img-scale-change img-fluid" src="#" data-src="~/assets/images/shop/product-cate-white.jpg" width="545" height="611" alt="Bodycare">
+                        </a>
+                        <div class="card-body text-center px-0 py-7">
+                            <h4 class="card-title fw-semibold mb-5"><a href="#">@item.Name</a></h4>
+                            <p class="card-text">23 items</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12" data-animate="fadeInUp">
-                <div class="card border-0">
-                    <a href="#" class="hover-shine img-scale overflow-hidden">
-                        <img class="lazy-image card-img-top img-scale-change img-fluid light-mode-img" src="#" data-src="~/assets/images/shop/product-cate-2.jpg" width="545" height="694" alt="Skincare">
-                        <img class="lazy-image dark-mode-img card-img-top img-scale-change img-fluid" src="#" data-src="~/assets/images/shop/product-cate-white-2.jpg" width="545" height="694" alt="Skincare">
-                    </a>
-                    <div class="card-body text-center px-0 py-7">
-                        <h4 class="card-title fw-semibold mb-5"><a href="#">Skincare</a></h4>
-                        <p class="card-text">16 items</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12" data-animate="fadeInUp">
-                <div class="card border-0">
-                    <a href="#" class="hover-shine img-scale overflow-hidden">
-                        <img class="lazy-image card-img-top img-scale-change img-fluid light-mode-img" src="#" data-src="~/assets/images/shop/categories-03.jpg" width="545" height="545" alt="Accessories">
-                        <img class="lazy-image dark-mode-img card-img-top img-scale-change img-fluid" src="#" data-src="~/assets/images/shop/categories-white-03.jpg" width="545" height="545" alt="Accessories">
-                    </a>
-                    <div class="card-body text-center px-0 py-7">
-                        <h4 class="card-title fw-semibold mb-5"><a href="#">Accessories</a></h4>
-                        <p class="card-text">13 items</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12" data-animate="fadeInUp">
-                <div class="card border-0">
-                    <a href="#" class="hover-shine img-scale overflow-hidden">
-                        <img class="lazy-image card-img-top img-scale-change img-fluid light-mode-img" src="#" data-src="~/assets/images/shop/categories-04.jpg" width="545" height="694" alt="Haircare">
-                        <img class="lazy-image dark-mode-img card-img-top img-scale-change img-fluid" src="#" data-src="~/assets/images/shop/categories-white-04.jpg" width="545" height="694" alt="Haircare">
-                    </a>
-                    <div class="card-body text-center px-0 py-7">
-                        <h4 class="card-title fw-semibold mb-5"><a href="#">Haircare</a></h4>
-                        <p class="card-text">56 items</p>
-                    </div>
-                </div>
-            </div>
+
+            }
         </div>
         <div class="text-center mt-10">
             <a href="https://templates.g5plus.net/shop/shop-layout-v1.html" target="_blank" class="btn btn-outline-dark">
