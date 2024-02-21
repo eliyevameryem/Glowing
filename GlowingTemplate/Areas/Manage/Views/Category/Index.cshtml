@@ -18,7 +18,8 @@
                         <tr>
                             <th>Count</th>
                             <th>Name</th>
-                            
+                            <th>Image</th>
+
                             <th>Button</th>
 
                         </tr>
@@ -31,7 +32,8 @@
 
                                 <td>@count</td>
                                 <td>@item.Name</td>
-                               
+                                <td><img src="~/upload/section/@item.ImageUrl" /></td>
+
                                 <td>
                                     <a class="btn btn-info" asp-controller="Category" asp-action="Update" asp-area="Manage" asp-route-id=@item.Id>Update</a>
                                     <a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-area="Manage" asp-route-id=@item.Id>Delete</a>

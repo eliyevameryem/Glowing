@@ -31,8 +31,16 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 .Include(p => p.Category)
                 .Include(p=>p.ProductImages)
                 .ToListAsync();
+            PaginateVM<Product> paginateVM = new PaginateVM<Product>()
+            {
+                CurrentPage = page,
+                Take = take,
+                Items = products,
+                TotalPage = products.Count()/take
 
-            return View(products);
+            };
+
+            return View(paginateVM);
         }
         public async Task<IActionResult> Create()
         {
@@ -70,22 +78,22 @@ namespace GlowingTemplate.Areas.Manage.Controllers
             };
             if (!productVM.MainPhoto.CheckLength(20000000))
             {
-                ModelState.AddModelError("MainPhoto", "Duzgun olculu sekil daxil elemediniz");
+                ModelState.AddModelError("MainPhoto", "The size of the image cannot exceed 200 MB");
                 return View(productVM);
             }
             if (!productVM.MainPhoto.CheckType("image/"))
             {
-                ModelState.AddModelError("MainPhoto", "Sekil daxil edin");
+                ModelState.AddModelError("MainPhoto", "Add a Picture");
                 return View(productVM);
             }
             if (!productVM.HoverPhoto.CheckLength(20000000))
             {
-                ModelState.AddModelError("HoverPhoto", "Duzgun olculu sekil daxil elemediniz");
+                ModelState.AddModelError("HoverPhoto", "The size of the image cannot exceed 200 MB");
                 return View();
             }
             if (!productVM.HoverPhoto.CheckType("image/"))
             {
-                ModelState.AddModelError("HoverPhoto", "Sekil daxil edin");
+                ModelState.AddModelError("HoverPhoto", "Add a Picture");
                 return View(productVM);
             }
             ProductImage mainphoto = new ProductImage()
@@ -221,12 +229,12 @@ namespace GlowingTemplate.Areas.Manage.Controllers
             {
                 if (!productUpdateVM.MainPhoto.CheckLength(20000000))
                 {
-                    ModelState.AddModelError("MainPhoto", "Duzgun olculu sekil daxil elemediniz");
+                    ModelState.AddModelError("MainPhoto", "The size of the image cannot exceed 200 MB");
                     return View(productUpdateVM);
                 }
                 if (!productUpdateVM.MainPhoto.CheckType("image/"))
                 {
-                    ModelState.AddModelError("MainPhoto", "Sekil daxil edin");
+                    ModelState.AddModelError("MainPhoto", "Add a Picture");
                     return View(productUpdateVM);
                 }
 
@@ -248,12 +256,12 @@ namespace GlowingTemplate.Areas.Manage.Controllers
             {
                 if (!productUpdateVM.HoverPhoto.CheckLength(20000000))
                 {
-                    ModelState.AddModelError("HoverPhoto", "Duzgun olculu sekil daxil elemediniz");
+                    ModelState.AddModelError("HoverPhoto", "The size of the image cannot exceed 200 MB");
                     return View(productUpdateVM);
                 }
                 if (!productUpdateVM.HoverPhoto.CheckType("image/"))
                 {
-                    ModelState.AddModelError("HoverPhoto", "Sekil daxil edin");
+                    ModelState.AddModelError("HoverPhoto", "Add a Picture");
                     return View(productUpdateVM);
                 }
 

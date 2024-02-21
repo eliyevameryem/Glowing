@@ -1,4 +1,11 @@
-﻿<!doctype html>
+﻿@using GlowingTemplate.Services;
+
+@inject CustemService service
+@{
+    var settings= await service.GetSetting();
+    var basket= await service.GetBasket(); 
+}
+<!doctype html>
 <html lang="en" data-bs-theme="light">
 
 <!-- Mirrored from templates.g5plus.net/glowing-bootstrap-5/home-05.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jan 2024 15:23:12 GMT -->

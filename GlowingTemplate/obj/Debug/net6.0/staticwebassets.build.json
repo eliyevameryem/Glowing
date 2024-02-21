@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LYv3mxNJaZ7eYYI91dZuKb628xBHn8qgz2kcF71h7wU=",
+  "Hash": "umjivWSVR0vBdKIcsyy6SJNauzX7js1k1u5cjqCWAm8=",
   "Source": "GlowingTemplate",
   "BasePath": "_content/GlowingTemplate",
   "Mode": "Default",
@@ -4214,6 +4214,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manage\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
+    },
+    {
+      "Identity": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\category\\0edd861a-5ee9-4154-abfe-1b35538bcf1binstagram-02.jpg",
+      "SourceId": "GlowingTemplate",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\",
+      "BasePath": "_content/GlowingTemplate",
+      "RelativePath": "upload/category/0edd861a-5ee9-4154-abfe-1b35538bcf1binstagram-02.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\category\\0edd861a-5ee9-4154-abfe-1b35538bcf1binstagram-02.jpg"
     },
     {
       "Identity": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\product\\09e0d637-58fe-4901-bca1-e7ad42929a11product-gallery-06.jpg",

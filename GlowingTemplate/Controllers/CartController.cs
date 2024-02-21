@@ -3,6 +3,7 @@ using GlowingTemplate.Models;
 using GlowingTemplate.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace GlowingTemplate.Controllers
@@ -26,19 +27,17 @@ namespace GlowingTemplate.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-                List<BasketItem> userBasket = await _context.BasketItem
+                List<BasketItem> userBasket = await _context.BasketItems
                     .Where(b => b.AppUserId == user.Id && b.OrderId == null)
-                    .Include(b => b.Product)
+                    .Include(c=>c.Product)
                     .ThenInclude(p => p.ProductImages
                     .Where(pi => pi.IsPrime == true)).ToListAsync();
                 foreach (var item in userBasket)
                 {
-                    basketItems.Add(new BasketItemVM()
+                    basketItems.Add(new BasketCookieVM()
                     {
-                        Price = item.Price,
-                        Count = item.Count,
-                        ImgUrl = item.Product.ProductImages.FirstOrDefault().ImageUrl,
-                        Name = item.Product.Name
+                       Count= item.Count,
+                       Id= item.Id,
                     });
                 }
             }
@@ -63,9 +62,6 @@ namespace GlowingTemplate.Controllers
                         basketItems.Add(new BasketCookieVM()
                         {
                             Id = item.Id,
-                            Name = product.Name,
-                            Price = product.Price,
-                            ImgUrl = product.ProductImages.FirstOrDefault().ImgUrl,
                             Count = item.Count
                         });
                     }
@@ -88,6 +84,7 @@ namespace GlowingTemplate.Controllers
                 AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
                 BasketItem existItem = await _context.BasketItems
                     .FirstOrDefaultAsync(p => p.AppUserId == user.Id && p.ProductId == product.Id && p.OrderId == null);
+
                 if (existItem != null)
                 {
                     existItem.Count++;
@@ -150,6 +147,24 @@ namespace GlowingTemplate.Controllers
 
 
             return RedirectToAction(nameof(Index), "Home");
+        }
+
+        public IActionResult RemoveBasket(int id)
+        {
+            string json = Request.Cookies["Basket"];
+            if(json != null)
+            {
+                List<BasketCookieVM> basket = JsonConvert.DeserializeObject<List<BasketCookieVM>>(json);
+               BasketCookieVM product=basket.FirstOrDefault(p => p.Id == id);
+                if(product != null)
+                {
+                    basket.Remove(product);
+                }
+                Response.Cookies.Append("Basket", JsonConvert.SerializeObject(basket));
+            }
+
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

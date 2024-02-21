@@ -17,6 +17,6 @@ namespace GlowingTemplate.DAL
 
         public DbSet<ProductImage> ProductImages { get; set; }
        
-
+        public DbSet<BasketItem> BasketItems { get; set; }
     }
 }

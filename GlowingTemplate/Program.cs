@@ -1,5 +1,7 @@
 using GlowingTemplate.DAL;
+using GlowingTemplate.Models;
 using GlowingTemplate.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace GlowingTemplate
@@ -12,14 +14,19 @@ namespace GlowingTemplate
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             builder.Services.AddDbContext<AppDbContext>(opt=>{
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
             });
-            builder.Services.AddSession();
+
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            builder.Services.AddScoped<LayoutService>();
-            var app = builder.Build();
+            builder.Services.AddScoped<CustemService>();
+            builder.Services.AddSession();
+            var app=builder.Build();
             app.UseSession();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -33,10 +40,11 @@ namespace GlowingTemplate
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+           
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.MapControllerRoute(
             name: "areas",

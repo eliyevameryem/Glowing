@@ -9,7 +9,7 @@ namespace GlowingTemplate.Models
         public int Count { get; set; }
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public int? OrderId { get; set; }
         public Order? Order { get; set; }
     }

@@ -985,6 +985,10 @@
       "PackagePath": "staticwebassets\\manage\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
     },
     {
+      "Id": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\category\\0edd861a-5ee9-4154-abfe-1b35538bcf1binstagram-02.jpg",
+      "PackagePath": "staticwebassets\\upload\\category\\0edd861a-5ee9-4154-abfe-1b35538bcf1binstagram-02.jpg"
+    },
+    {
       "Id": "C:\\Users\\Asus\\Desktop\\GlowingTemplate\\GlowingTemplate\\wwwroot\\upload\\product\\09e0d637-58fe-4901-bca1-e7ad42929a11product-gallery-06.jpg",
       "PackagePath": "staticwebassets\\upload\\product\\09e0d637-58fe-4901-bca1-e7ad42929a11product-gallery-06.jpg"
     },

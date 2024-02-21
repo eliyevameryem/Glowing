@@ -1,8 +1,7 @@
 ﻿@using GlowingTemplate.Areas.Manage.ViewModels;
 @using GlowingTemplate.Models;
 
-@model PaginateVM<Product>
-
+@model List<Product>
 @{
     int count = (ViewBag.CurrentPage - 1) * 3;
 }
@@ -35,7 +34,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (Product product in Model.Items)
+                        @foreach (Product product in Model)
                         {
                             count++;
                             <tr>
@@ -64,25 +63,17 @@
             </div>
         </div>
     </div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item @(Model.CurrentPage==1?"disabled":"")">
-                <a class="page-link" asp-route-page="@(Model.CurrentPage-1)" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-
-            @for (int i = 0; i < Model.TotalPage; i++)
-            {
-                <li class="page-item @(Model.CurrentPage==(i+1)?"active":"")"><a class="page-link" asp-route-page="@(i+1)">@(i + 1)</a></li>
-            }
-
-            <li class="page-item @(Model.CurrentPage>=Model.TotalPage?"disabled":"")">
-                <a class="page-link" asp-route-page="@(Model.CurrentPage+1)" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+   
 </div>
+<nav aria-label="...">
+    <ul class="pagination pagination-lg">
+        @for (int i = 1; i <= ViewBag.TotalPage; i++)
+        {
+            <li class="page-item @(ViewBag.CurrentPage==i?"active":"" )" aria-current="page">
+                <a class="page-link" asp-action="Index" asp-controller="Product" asp-route-page=@i>@i</a>
+            </li>
+        }
+
+    </ul>
+</nav>
 
