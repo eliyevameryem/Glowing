@@ -50,7 +50,7 @@
                                     </a>
                                     <div class="position-absolute product-flash z-index-2 "><span class="badge badge-product-flash on-new">New</span></div>
                                     <div class="position-absolute d-flex z-index-2 product-actions  horizontal">
-                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart">
+                                        <a @* asp-action="AddBasket" asp-controller="Card" asp-route-id=@item.Id *@ class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart add-basket-button" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart">
                                             <svg class="icon icon-shopping-bag-open-light">
                                                 <use xlink:href="#icon-shopping-bag-open-light"></use>
                                             </svg>
@@ -171,12 +171,12 @@
                 <div class="col-lg-3 col-md-6 col-12" data-animate="fadeInUp">
                     <div class="card border-0">
                         <a href="#" class="hover-shine img-scale overflow-hidden">
-                            <img class="lazy-image card-img-top img-scale-change img-fluid light-mode-img" src="#" data-src="~/assets/images/shop/product-cate.jpg" width="545" height="611" alt="Bodycare">
-                            <img class="lazy-image dark-mode-img card-img-top img-scale-change img-fluid" src="#" data-src="~/assets/images/shop/product-cate-white.jpg" width="545" height="611" alt="Bodycare">
+                            <img class="lazy-image card-img-top img-scale-change img-fluid light-mode-img" src="#" src="~/upload/category/@item.ImageUrl" width="545" height="611" alt="Bodycare">
+                            <img class="lazy-image dark-mode-img card-img-top img-scale-change img-fluid" src="#" src="~/assets/images/shop/product-cate-white.jpg" width="545" height="611" alt="Bodycare">
                         </a>
                         <div class="card-body text-center px-0 py-7">
                             <h4 class="card-title fw-semibold mb-5"><a href="#">@item.Name</a></h4>
-                            <p class="card-text">23 items</p>
+                            <p class="card-text"></p>
                         </div>
                     </div>
                 </div>

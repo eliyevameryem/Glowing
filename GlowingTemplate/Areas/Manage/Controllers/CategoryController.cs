@@ -47,7 +47,7 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 ModelState.AddModelError("ImageFile", "Add a Picture");
                 return View();
             }
-            if (!category.ImageFile.CheckLength(200))
+            if (category.ImageFile.CheckLength(200))
             {
                 ModelState.AddModelError("ImageFile", "The size of the image cannot exceed 200 MB");
                 return View();
@@ -78,24 +78,23 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 return View();
             }
 
-            if (category.ImageFile == null)
+            if (category.ImageFile != null)
             {
-                ModelState.AddModelError("ImageFile", "Add a Picture");
-                return View();
-            }
-            if (!category.ImageFile.CheckType("image/"))
-            {
-                ModelState.AddModelError("ImageFile", "Add a Picture");
-                return View();
-            }
-            if (!category.ImageFile.CheckLength(200))
-            {
-                ModelState.AddModelError("ImageFile", "The size of the image cannot exceed 200 MB");
-                return View();
-            }
+                if (!category.ImageFile.CheckType("image/"))
+                {
+                    ModelState.AddModelError("ImageFile", "Add a Picture");
+                    return View();
+                }
+                if (!category.ImageFile.CheckLength(200))
+                {
+                    ModelState.AddModelError("ImageFile", "The size of the image cannot exceed 200 MB");
+                    return View();
+                }
 
-            newcategory.ImageUrl.DeleteFile(_env.WebRootPath, "upload/category");
-            newcategory.ImageUrl = newcategory.ImageFile.CreateFile(_env.WebRootPath, "upload/category");
+                newcategory.ImageUrl.DeleteFile(_env.WebRootPath, "upload/category");
+                newcategory.ImageUrl = category.ImageFile.CreateFile(_env.WebRootPath, "upload/category");
+            }
+            
 
             newcategory.Name = category.Name;
             await _context.SaveChangesAsync();

@@ -31,16 +31,11 @@ namespace GlowingTemplate.Areas.Manage.Controllers
                 .Include(p => p.Category)
                 .Include(p=>p.ProductImages)
                 .ToListAsync();
-            PaginateVM<Product> paginateVM = new PaginateVM<Product>()
-            {
-                CurrentPage = page,
-                Take = take,
-                Items = products,
-                TotalPage = products.Count()/take
+            List<Product> productsList = _context.Products.Where(p => p.IsDeleted == false).ToList();
 
-            };
-
-            return View(paginateVM);
+            ViewBag.TotalPage = (int)Math.Ceiling((double)productsList.Count / take);
+            ViewBag.CurrentPage = page;
+            return View(products);
         }
         public async Task<IActionResult> Create()
         {

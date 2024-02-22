@@ -1,0 +1,74 @@
+﻿
+
+@model List<FAQ>
+
+
+<main id="content" class="wrapper layout-page">
+    <section class="pb-16 pb-lg-18 ">
+        <div class="bg-body-secondary py-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a class="text-decoration-none text-body" href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">
+                        Frequently Asked
+                        Questions
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="container">
+            <div class=" text-center pt-13 mb-12 mb-lg-15">
+                <div class="text-center"><h2 class="fs-36px mb-11 mb-lg-14">Frequently Asked Questions</h2></div>
+                <form method="post" action="#" style="max-width: 770px" class="mx-auto ">
+                    <div class="input-group ">
+                        <button type="submit" class="input-group-text bg-transparent px-6 border-0 position-absolute z-index-4 text-body-emphasis fs-5 start-0 top-0 bottom-0 m-auto">
+                            <svg class="icon icon-magnifying-glass-light">
+                                <use xlink:href="#icon-magnifying-glass-light"></use>
+                            </svg>
+                        </button>
+                        <input type="search" name="search" class="input-focus form-control ps-12" placeholder="What are you looking for?">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card border-0 hover-zoom-in">
+                <div class="image-box-4">
+                    <img data-src="./assets/images/banner/banner-35.jpg" class="img-fluid lazy-image" alt src="#">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pt-15 pt-lg-18">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                           
+                           @foreach (var item in Model)
+                            {
+                                <div class="accordion-item pb-4 pt-11">
+                                    <h2 class="accordion-header" id="flush-headingTwo">
+                                        <a class="product-info-accordion collapsed text-decoration-none" href="#" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                            <span class="fs-18px">@item.Question</span>
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="py-8">
+                                        <p>
+                                           @item.Answer
+                                        </p>
+                                        
+                                    </div>
+                                </div>
+                            }
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
