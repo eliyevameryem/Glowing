@@ -1,10 +1,10 @@
 ﻿@using GlowingTemplate.Services;
 
-@inject CustemService service
+@* @inject CustemService service
 @{
     var settings= await service.GetSetting();
     var basket= await service.GetBasket(); 
-}
+} *@
 <!doctype html>
 <html lang="en" data-bs-theme="light">
 
@@ -98,35 +98,13 @@ Auto
 </div>
 <ul class="navbar-nav w-100 w-xl-auto">
 <li class="nav-item transition-all-xl-1 py-xl-11 py-0 px-xxl-8 px-xl-6 dropdown dropdown-hover dropdown-fullwidth">
-<a asp-controller="Home" asp-action="Index" class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle" href="index.html" data-bs-toggle="dropdown" id="menu-item-home" aria-haspopup="true" aria-expanded="false">Home</a><div class="dropdown-menu mega-menu start-0 py-6 " aria-labelledby="menu-item-home" style="width:320px">
-<div class="megamenu-home container py-8 px-12">
-
-</div></li>
+<a class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle" href="index.html" data-bs-toggle="dropdown" id="menu-item-home" aria-haspopup="true" aria-expanded="false">Home</a><div class="dropdown-menu mega-menu start-0 py-6 " @* aria-labelledby="menu-item-home"  *@style="width:320px">
+</li>
 <li class="nav-item transition-all-xl-1 py-xl-11 py-0 px-xxl-8 px-xl-6 dropdown dropdown-hover dropdown-fullwidth position-static">
 <a  class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle" href="store.html" data-bs-toggle="dropdown" id="menu-item-shop" aria-haspopup="true" aria-expanded="false">Shop</a><div class="dropdown-menu mega-menu start-0 py-6  w-100" aria-labelledby="menu-item-shop">
-<div class="megamenu-shop container-wide py-8 px-12">
 
-
-<div class="col d-xxl-block d-none megamenu-shop-banner" data-bs-theme="light">
-<div class="card border-0 mt-4">
-<img src="~/assets/images/background/bg-mega-menu-shop.jpg" alt="bg mega menu" class="card-img">
-<div class="card-img-overlay d-flex flex-column mx-2 px-9 py-6">
-<p class="text-body-emphasis ls-1 fw-semibold mb-4 mt-6 text-uppercase">
-new collection
-</p>
-<h3 class="fs-3">
-Special <br>
-Offer
-</h3>
-<div class="mt-auto">
-<a href="#" class="btn btn-white">Shop Sale</a>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></li>
+</li>
 <li class="nav-item transition-all-xl-1 py-xl-11 py-0 px-xxl-8 px-xl-6 dropdown dropdown-hover">
 <a class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle" href="#" data-bs-toggle="dropdown" id="menu-item-pages" aria-haspopup="true" aria-expanded="false">Pages</a><ul class="dropdown-menu py-6" aria-labelledby="menu-item-pages"><li class="dropend dropdown-hover" aria-haspopup="true" aria-expanded="false">
 <a class="dropdown-item pe-6 dropdown-toggle d-flex justify-content-between border-hover" href="#" data-bs-toggle="dropdown" id="menu-item-blog">
@@ -268,7 +246,7 @@ Store
 </ul>
 </div>
 <div class="d-none d-xl-flex align-items-center ">
-<a asp-controller="Home" asp-action="Index" href="index-2.html" class="navbar-brand px-8 py-4 mx-auto">
+<a  href="index-2.html" class="navbar-brand px-8 py-4 mx-auto">
 <img class="light-mode-img" src="~/assets/images/others/logo.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
 <img class="dark-mode-img" src="~/assets/images/others/logo-white.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates"></a>
 </div>

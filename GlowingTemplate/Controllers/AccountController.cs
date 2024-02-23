@@ -27,7 +27,6 @@ namespace GlowingTemplate.Controllers
         public IActionResult Register()
         {
 
-
             return View();
         }
 
